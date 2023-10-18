@@ -1,11 +1,9 @@
- Magnets [] Leo; //Global Array Initialization
+Magnets [] Leo; //Global Array Initialization
 int x = 150; //Global Variables
 int y = 80;
-boolean collision;
 
 void setup () {
   size(500, 500); 
-  collision = false;
   Leo = new Magnets[10]; //setting the # of magnets
   for (int i = 0; i < Leo.length; i++) { //drawing the magnets
     Leo[i] = new Magnets();
@@ -18,6 +16,9 @@ void draw () {
   for (int i = 0; i < Leo.length; i++) { //performing every magnet function
     Leo[i].show();
     Leo[i].move();
+    if (dist(Leo[i].myX, Leo[i].myY, x, y) < 50) { //checking if collision is true
+      Leo[i].myX = x;
+    }
   }
 }
 
@@ -32,15 +33,9 @@ class Magnets {
     myY = myY + (int)(Math.random()*2)-1; //biast movements
     if (myY < y) 
       myY = y;
-    if (dist(myX, myY, x, y) < 50) { //checking if collision is true
-      collision = true;
-    }
-    if (collision == true) { //delay between checks
-      myX = x;
-    }
   }
   void show () {
-    stroke(0, 0, 255); //drawing the magnets
+    stroke(0, (int)(random(1, 10)), 255); //drawing the magnets
     ellipse(myX, myY, 30, 30);
   }
 }
