@@ -25,7 +25,7 @@ class Magnets {
   int myX, myY; //local variables
   Magnets () {
     myX = (int)(Math.random()*300)+100; //random place to be drawn
-    myY = (int)(Math.random()*500)+100;
+    myY = (int)(Math.random()*700)+400;
   }
   void move () { 
     myX = myX + (int)(Math.random()*3)-1; //unbiast movements
